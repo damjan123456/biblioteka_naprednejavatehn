@@ -11,9 +11,9 @@ export default function DodajPozajmicuPage() {
     const d = new Date(); d.setDate(d.getDate()+14); return d.toISOString().slice(0,10);
   });
 
-  // form za dodavanje jedne stavke
+
   const [odabranaKnjigaId, setOdabranaKnjigaId] = useState("");
-  const [stavke, setStavke] = useState([]); // [{knjigaId, knjigaNaslov}]
+  const [stavke, setStavke] = useState([]); //
 
   useEffect(() => {
     Promise.all([getClanovi(), getKnjige()]).then(([cl, kn]) => {
@@ -54,7 +54,6 @@ export default function DodajPozajmicuPage() {
       setClanId("");
       setStavke([]);
     } catch (e) {
-      // interceptor već prikazuje poruku
     }
   }
 
@@ -62,7 +61,7 @@ export default function DodajPozajmicuPage() {
     <div style={{ padding: 16 }}>
       <h2>Dodaj pozajmicu</h2>
 
-      {/* Član */}
+
       <div style={{ display:"grid", gridTemplateColumns:"220px 1fr", gap:8, maxWidth:640, marginTop:8 }}>
         <label>Član</label>
         <select className="input" value={clanId} onChange={e=>setClanId(e.target.value)}>
@@ -83,7 +82,7 @@ export default function DodajPozajmicuPage() {
 
       <hr style={{ margin:"16px 0" }} />
 
-      {/* Dodavanje stavke */}
+      /* Dodavanje stavke */
       <div style={{ display:"flex", gap:8, alignItems:"center", flexWrap:"wrap" }}>
         <select className="input" value={odabranaKnjigaId} onChange={e=>setOdabranaKnjigaId(e.target.value)}>
           <option value="">-- izaberi knjigu --</option>
@@ -94,7 +93,7 @@ export default function DodajPozajmicuPage() {
         <button className="btn" type="button" onClick={addStavka}>Dodaj stavku</button>
       </div>
 
-      {/* Lista stavki u ovoj pozajmici */}
+
       <table className="table" style={{ marginTop:12 }}>
         <thead>
           <tr>

@@ -1,4 +1,3 @@
-// src/components/AutoriPage.jsx
 import { useEffect, useState } from "react";
 import { getAutori, createAutor } from "../services/api.js";
 
@@ -15,7 +14,7 @@ export default function AutoriPage() {
 
   async function load() {
     try {
-      const data = await getAutori(); // vrati sve
+      const data = await getAutori();
       setItems(data || []);
     } catch {
       notify("Greška pri učitavanju", false);
@@ -34,7 +33,7 @@ export default function AutoriPage() {
     try {
       await createAutor({ ime, prezime });
       setForm({ ime: "", prezime: "" });
-      await load(); // da se odmah pojavi u tabeli
+      await load();
       notify("Autor je dodat");
     } catch {
       notify("Dodavanje nije uspelo", false);

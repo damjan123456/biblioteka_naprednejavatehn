@@ -7,8 +7,6 @@ export default function MojePozajmicePage({ adminView = false }) {
   useEffect(() => {
     async function load() {
       const user = auth.getUser();
-      // ako je adminView, prosledi null da bi backend vratio sve pozajmice;
-      // inače prosledi id člana da bi dobio samo svoje
       const data = await getPozajmice(adminView ? undefined : user?.id);
       setPozajmice(data || []);
     }

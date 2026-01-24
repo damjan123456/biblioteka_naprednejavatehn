@@ -1,4 +1,3 @@
-// src/components/IzmeniPozajmicuPage.jsx
 import { useEffect, useMemo, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
@@ -9,7 +8,7 @@ import {
   vratiStavku,
 } from "../services/api";
 
-const DAILY_FINE = 50; // RSD/dan
+const DAILY_FINE = 50;
 
 export default function IzmeniPozajmicuPage() {
   const { id } = useParams();
@@ -43,7 +42,7 @@ export default function IzmeniPozajmicuPage() {
     const p = (x) => String(x).padStart(2, "0");
     return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
   }
-  function daysBetween(d1, d2) {
+  function  daysBetween(d1, d2) {
     if (!d1 || !d2) return 0;
     const ms = parseISO(d1).getTime() - parseISO(d2).getTime();
     return Math.ceil(ms / (1000 * 60 * 60 * 24));
@@ -134,7 +133,7 @@ export default function IzmeniPozajmicuPage() {
       const next = [...prev];
       let cur = { ...next[idx], ...patch };
 
-      // ako je status postavljen na VRACENA i nema datuma, popuni danas
+
       if ("statusId" in patch) {
         const naziv = nazivStatusaById.get(Number(cur.statusId));
         if (!cur.datumVracanja && naziv && naziv.toUpperCase() === "VRACENA") {
@@ -142,7 +141,7 @@ export default function IzmeniPozajmicuPage() {
         }
       }
 
-      // preračun po promeni datuma/statusa
+
       if ("datumVracanja" in patch || "statusId" in patch) {
         cur = recompute(cur);
       }
@@ -159,8 +158,8 @@ export default function IzmeniPozajmicuPage() {
         await vratiStavku(r.stavkaId, {
           datumVracanja: r.datumVracanja || null,
           statusId: r.statusId ? Number(r.statusId) : null,
-          kazna: Number.isFinite(+r.kazna) ? +r.kazna : 0, // izračunato, ne ručni unos
-          poeni: Number.isFinite(+r.poeni) ? +r.poeni : 0, // izračunato, ne ručni unos
+          kazna: Number.isFinite(+r.kazna) ? +r.kazna : 0, //
+          poeni: Number.isFinite(+r.poeni) ? +r.poeni : 0, //
         });
       }
       setMsg("Sačuvano");

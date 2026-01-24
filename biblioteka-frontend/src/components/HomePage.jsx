@@ -1,4 +1,3 @@
-// src/components/HomePage.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login, auth } from "../services/api";

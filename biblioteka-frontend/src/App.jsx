@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, Navigate, Link, useNavigate } from "react
 import HomePage from "./components/HomePage.jsx";
 import { auth } from "./services/api.js";
 
-// Placeholder stranice — napravi ove komponente u /src/components/
 import KnjigePage from "./components/KnjigePage.jsx";
 import AutoriPage from "./components/AutoriPage.jsx";
 import MojePozajmicePage from "./components/MojePozajmicePage.jsx";

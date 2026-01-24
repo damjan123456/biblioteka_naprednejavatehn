@@ -11,7 +11,7 @@ export default function KnjigePage() {
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState("");
 
-  const [authors, setAuthors] = useState([]); // [{id, ime, prezime}]
+  const [authors, setAuthors] = useState([]);
   const authorMap = useMemo(() => {
     const m = {};
     for (const a of authors) m[a.id] = `${a.ime} ${a.prezime}`;
@@ -133,7 +133,6 @@ export default function KnjigePage() {
 
   return (
     <div style={{ padding:16, maxWidth:1200, margin:"0 auto" }}>
-      {/* top notification */}
       {note.visible && (
         <div style={{
           position:"fixed", top:12, left:0, right:0, display:"flex", justifyContent:"center", zIndex:9999
@@ -153,7 +152,7 @@ export default function KnjigePage() {
 
       <h2>Knjige</h2>
 
-      {/* Pretraga */}
+
       <form onSubmit={handleSearch} style={{ display:"flex", gap:8, marginBottom:12 }}>
         <input
           value={search}
@@ -165,7 +164,6 @@ export default function KnjigePage() {
         <button className="btn" type="submit">Pretraži</button>
       </form>
 
-      {/* Tabela */}
       <table style={{ width:"100%", borderCollapse:"collapse", marginBottom:24 }}>
         <thead>
           <tr style={{ background:"#eef3ff" }}>
@@ -256,7 +254,6 @@ export default function KnjigePage() {
         </tbody>
       </table>
 
-      {/* Nova knjiga – samo admin */}
       {isAdmin && (
         <form onSubmit={addNew} style={{ padding:12, border:"1px solid #ddd", borderRadius:8, background:"#fafcff" }}>
           <h3>Dodaj novu knjigu</h3>

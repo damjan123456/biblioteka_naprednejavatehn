@@ -1,4 +1,3 @@
-// src/components/AdminPozajmiceListPage.jsx
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -21,10 +20,10 @@ export default function AdminPozajmiceListPage() {
     setLoading(true);
     try {
       const [poz, cls, knj, sts] = await Promise.all([
-        getPozajmice(),       // /api/pozajmice
-        getClanovi?.() ?? [], // /api/clanovi  (ako nemaš endpoint, ukloni)
-        getKnjige(),          // /api/knjige
-        getStatusi(),         // /api/statusi
+        getPozajmice(),
+        getClanovi?.() ?? [],
+        getKnjige(),
+        getStatusi(),
       ]);
 
       const cMap = Array.isArray(cls)
@@ -54,7 +53,6 @@ export default function AdminPozajmiceListPage() {
     if (!window.confirm("Obrisati pozajmicu?")) return;
     await deletePozajmica(id);
     alert("Pozajmica je obrisana");
-      // DELETE /api/pozajmice/{id}
     await load();
   }
 

@@ -132,25 +132,27 @@ export const vratiStavku = async (stavkaId, req) => {
   return res.data;
 };
 
-/* CLAN – poeni */
-export const getMojiPoeni = async (clanId) => {
-  const res = await api.get(`/clanovi/${clanId}/poeni`);
-  return res.data; // {poeni: number}
-};
-
-/* POZAJMICE – adminsko menjanje statusa jedne stavke */
-export const setStavkaStatus = async (stavkaId, statusId) => {
-  const res = await api.put(`/pozajmice/stavke/${stavkaId}/status`, { statusId });
-  return res.data; // vraća ažuriranu stavku ili OK poruku
-};
-
-/* POZAJMICE – opcionalno: vrati stavku sa datumom, kaznom i poenima */
 export const vratiStavkuV2 = async (stavkaId, { datumVracanja, statusId, kazna, poeni }) => {
   const res = await api.put(`/pozajmice/stavke/${stavkaId}/vrati`, {
     datumVracanja, statusId, kazna, poeni
   });
   return res.data;
 };
+
+/* adminsko menjanje statusa jedne stavke */
+export const setStavkaStatus = async (stavkaId, statusId) => {
+  const res = await api.put(`/pozajmice/stavke/${stavkaId}/status`, { statusId });
+  return res.data;
+};
+
+/* CLAN – poeni */
+export const getMojiPoeni = async (clanId) => {
+  const res = await api.get(`/clanovi/${clanId}/poeni`);
+  return res.data;
+};
+
+
+
 
 
 
